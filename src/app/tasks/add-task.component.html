@@ -1,0 +1,53 @@
+<form (ngSubmit)="addTask()" class="form-horizontal" ngNativeValidate>
+    <div class="tab-pane active" id="addPane">
+
+        <div class="form-group row">
+            <label class="col-xs-2 defaultLabel" for="task">Task:</label>
+            <div class="col-xs-4">
+                <input type="text" required class="form-control defaultTexBox" [(ngModel)]="newTask.task" name="task" > 
+            </div>
+        </div>
+
+
+        <div class="form-group row">
+            <label class="col-xs-2 defaultLabel" for="priority">Priority:</label>
+            <div class="col-xs-4">
+                <span id="slider_min_value" class="rangeMin">0</span>
+                <span id="slider_max_value" class="rangeMax">30</span>
+                <input type="range" required class="slider" min="0" max="30" value="10" [(ngModel)]="newTask.priority" name="priority"  step="1" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-xs-2 defaultLabel" for="ParentTask">Parent Task:</label>
+            <div class="col-xs-4">
+                <input type="text" required class="form-control defaultTexBox" [(ngModel)]="newTask.parentId"  name="parentId"/>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-xs-2 defaultLabel" for="StartDate">Start Date:</label>
+            <div class="col-xs-4">
+                <input type="text" required onfocus="(this.type='date')" onfocusout="(this.type='text')" class="form-control defaultTexBox"
+                    [(ngModel)]="newTask.startDate" name="startDate" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-xs-2 defaultLabel" for="EndDate">End Date:</label>
+            <div class="col-xs-4">
+                <input type="text" required onfocus="(this.type='date')" onfocusout="(this.type='text')" class="form-control defaultTexBox"
+                    [(ngModel)]="newTask.endDate" name="endDate" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-offset-2 col-xs-4">
+                <!-- <button (click) = "addTask()" class="btn defaultButton">AddTask</button> -->
+                  <button type="submit" class="btn defaultButton">AddTask</button>
+                <button type="reset" class="btn defaultButton">Reset</button>
+            </div>
+        </div>
+        <!-- </form> -->
+    </div>
+</form>
+

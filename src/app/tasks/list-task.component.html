@@ -1,0 +1,65 @@
+
+<form #taskForm="ngForm" class="form-horizontal">
+  <div class="tab-pane" id="viewPane">
+    <!-- <form class="form-horizontal"> -->
+    <div class="form-group row">
+      <label class="col-xs-1 defaultLabel">Task:</label>
+      <div class="col-xs-5">
+        <input type="text" class="form-control defaultTexBox" id="Task" name="Task" [(ngModel)]="sTask"/>
+      </div>
+      <label class="col-xs-1 defaultLabel">Parent Task:</label>
+      <div class="col-xs-5">
+        <input type="text" class="form-control defaultTexBox" id="ParentTask" name="ParentTask" [(ngModel)]="spTask"/>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-xs-1 defaultLabel">Priority From:</label>
+      <div class="col-xs-2">
+        <input type="text" class="form-control defaultTexBox" id="PriorityFrom" name="PriorityFrom" [(ngModel)]="sPriorityFrom"/>
+      </div>
+      <label class="col-xs-1 defaultLabel">Priority To:</label>
+      <div class="col-xs-2">
+        <input type="text" class="form-control defaultTexBox" id="PriorityTo" name="PriorityTo"  [(ngModel)]="sPriorityTo"/>
+      </div>
+      <label class="col-xs-1 defaultLabel">Start Date:</label>
+      <div class="col-xs-2">
+        <input type="text" onfocus="(this.type='date')" onfocusout="(this.type='text')" class="form-control defaultTexBox"
+          id="StartDate" name="StartDate" [(ngModel)]="sStartdate" />
+      </div>
+      <label class="col-xs-1 defaultLabel">End Date:</label>
+      <div class="col-xs-2">
+        <input type="text" onfocus="(this.type='date')" onfocusout="(this.type='text')" class="form-control defaultTexBox"
+          id="EndDate" name="EndDate" [(ngModel)]="sEnddate"/>
+      </div>
+    </div>
+
+    <hr class="style6" />
+
+    <table class="table" id="myTable">
+      <thead>
+        <tr>
+          <th>Task</th>
+          <th>Parent</th>
+          <th>Priority</th>
+          <th>Start</th>
+          <th>End</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      
+      <tbody>
+        <tr *ngFor="let task of tasks | taskFilter: sTask:spTask:sPriorityFrom:sPriorityTo:sStartdate:sEnddate">
+          <td>{{task.task}}</td>
+          <td>{{task.parentId}}</td>
+          <td>{{task.priority}}</td>
+          <td>{{task.startDate}}</td>
+          <td>{{task.endDate}}</td>
+          <td><button (click)="updateTask(task)"  class="btn defaultButton">Edit</button></td>
+          <td><button (click)="deleteTask(task.taskId)"  class="btn defaultButton">Delete</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</form>
